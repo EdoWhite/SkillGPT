@@ -19,3 +19,4 @@ tqdm==4.64.1
 transformers==4.29.1
 pydantic==1.10.19
 gradio==3.*
+sentencepiece
