@@ -151,90 +151,55 @@ def reset_state():
     return None, None, None, None, [], [], []
 
 
-with gr.Blocks(scale=4) as demo:
-    gr.HTML("""<h1 align="center">PandaGPT</h1>""")
+# Define Gradio app layout
+with gr.Blocks() as demo:
+    gr.HTML("<h1 align='center'>PandaGPT</h1>")
 
-    with gr.Row(scale=4):
-        with gr.Column(scale=1):
-            image_path = gr.Image(type="filepath", label="Image", value=None)
-        with gr.Column(scale=1):
-            audio_path = gr.Audio(type="filepath", label="Audio", value=None)
-        with gr.Column(scale=1):
-            video_path = gr.Video(type='file', label="Video")
-        with gr.Column(scale=1):
-            thermal_path = gr.Image(type="filepath", label="Thermal Image", value=None)
-
-    chatbot = gr.Chatbot().style(height=300)
     with gr.Row():
-        with gr.Column(scale=4):
-            with gr.Column(scale=12):
-                user_input = gr.Textbox(show_label=False, placeholder="Input...", lines=10).style(container=False)
-            with gr.Column(min_width=32, scale=1):
-                with gr.Row(scale=1):
-                    submitBtn = gr.Button("Submit", variant="primary")
-                with gr.Row(scale=1):
-                    resubmitBtn = gr.Button("Resubmit", variant="primary")
-        with gr.Column(scale=1):
-            emptyBtn = gr.Button("Clear History")
-            max_length = gr.Slider(0, 400, value=256, step=1.0, label="Maximum length", interactive=True)
-            top_p = gr.Slider(0, 1, value=0.01, step=0.01, label="Top P", interactive=True)
-            temperature = gr.Slider(0, 1, value=1.0, step=0.01, label="Temperature", interactive=True)
+        # Upload components for image, audio, video, and thermal image inputs
+        image_path = gr.Image(type="filepath", label="Image")
+        audio_path = gr.Audio(type="filepath", label="Audio")
+        video_path = gr.Video(type='file', label="Video")
+        thermal_path = gr.Image(type="filepath", label="Thermal Image")
 
+    # Chatbot interface
+    chatbot = gr.Chatbot().style(height=300)
+
+    # User input section
+    with gr.Row():
+        user_input = gr.Textbox(show_label=False, placeholder="Input...", lines=3).style(container=False)
+        submitBtn = gr.Button("Submit", variant="primary")
+        resubmitBtn = gr.Button("Resubmit", variant="primary")
+        emptyBtn = gr.Button("Clear History")
+
+    # Settings section for max length, top p, and temperature
+    with gr.Row():
+        max_length = gr.Slider(minimum=0, maximum=400, value=256, label="Maximum Length")
+        top_p = gr.Slider(minimum=0, maximum=1, value=0.01, step=0.01, label="Top P")
+        temperature = gr.Slider(minimum=0, maximum=1, value=1.0, step=0.01, label="Temperature")
+
+    # States to keep track of chatbot history and modality cache
     history = gr.State([])
     modality_cache = gr.State([])
 
+    # Define interactions
     submitBtn.click(
-        predict, [
-            user_input, 
-            image_path, 
-            audio_path, 
-            video_path, 
-            thermal_path, 
-            chatbot, 
-            max_length, 
-            top_p, 
-            temperature, 
-            history, 
-            modality_cache,
-        ], [
-            chatbot, 
-            history,
-            modality_cache
-        ],
+        fn=predict, 
+        inputs=[user_input, image_path, audio_path, video_path, thermal_path, chatbot, max_length, top_p, temperature, history, modality_cache], 
+        outputs=[chatbot, history, modality_cache],
         show_progress=True
     )
 
     resubmitBtn.click(
-        re_predict, [
-            user_input, 
-            image_path, 
-            audio_path, 
-            video_path, 
-            thermal_path, 
-            chatbot, 
-            max_length, 
-            top_p, 
-            temperature, 
-            history, 
-            modality_cache,
-        ], [
-            chatbot, 
-            history,
-            modality_cache
-        ],
+        fn=re_predict, 
+        inputs=[user_input, image_path, audio_path, video_path, thermal_path, chatbot, max_length, top_p, temperature, history, modality_cache], 
+        outputs=[chatbot, history, modality_cache],
         show_progress=True
     )
 
+    # Additional interactions
+    submitBtn.click(fn=reset_user_input, inputs=[], outputs=[user_input])
+    emptyBtn.click(fn=reset_state, inputs=[], outputs=[image_path, audio_path, video_path, thermal_path, chatbot, history, modality_cache])
 
-    submitBtn.click(reset_user_input, [], [user_input])
-    emptyBtn.click(reset_state, outputs=[
-        image_path,
-        audio_path,
-        video_path,
-        thermal_path,
-        chatbot, 
-        history, 
-        modality_cache
-    ], show_progress=True)
-
+# Launch the Gradio app
 demo.launch(share=True)

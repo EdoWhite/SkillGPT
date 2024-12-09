@@ -1,0 +1,3 @@
+pretrained_ckpt/imagebind_ckpt/imagebind_huge.pth
+pretrained_ckpt/pandagpt_ckpt/7b/pytorch_model.pt
+pretrained_ckpt/vicuna_ckpt/7b_v0/*

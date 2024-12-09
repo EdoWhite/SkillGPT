@@ -1,42 +1,4 @@
-<p align="center" width="100%">
-<img src="./pandagpt.png" alt="PandaGPT-4" style="width: 40%; min-width: 300px; display: block; margin: auto;">
-</p>
-
-# PandaGPT: One Model To Instruction-Follow Them All
-
-![Data License](https://img.shields.io/badge/Data%20License-CC%20By%20NC%204.0-red.svg)
-![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)
-![Model Weight License](https://img.shields.io/badge/Model_Weight%20License-CC%20By%20NC%204.0-red.svg)
-![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)
-
-
-<p align="left">
-   🌐 <a href="https://panda-gpt.github.io/" target="_blank">Project Page</a> • 🤗 <a href="https://huggingface.co/spaces/GMFTBY/PandaGPT" target="_blank">Online Demo</a> • 🤗 <a href="https://ailabnlp.tencent.com/research_demos/panda_gpt/" target="_blank">Online Demo-2 (Runs fast for users from mainland China)</a> • 📃 <a href="http://arxiv.org/abs/2305.16355" target="_blank">Paper</a> •  ⏬ <a href="https://github.com/yxuansu/PandaGPT/blob/main/README.md#31-data-preparation" target="_blank">Data</a> • 🤖 <a href="https://github.com/yxuansu/PandaGPT/blob/main/README.md#24-prepare-delta-weights-of-pandagpt" target="_blank">Model</a> • 📹 <a href="https://www.youtube.com/watch?v=96XgdQle7EY" target="_blank">Video</a>
-</p>
-
-
-**Team:** [Yixuan Su](https://yxuansu.github.io/)<sup>\*</sup>, [Tian Lan](https://github.com/gmftbyGMFTBY)<sup>\*</sup>, [Huayang Li](https://sites.google.com/view/huayangli)<sup>\*</sup>, Jialu Xu, Yan Wang, and [Deng Cai](https://jcyk.github.io/)<sup>\*</sup> (Major contributors<sup>\*</sup>)
-
-****
-
-## Online Demo Demonstration:
-
-Below, we demonstrate some examples of our online [demo](https://huggingface.co/spaces/GMFTBY/PandaGPT). For more generated examples of PandaGPT, please refer to our [webpage](https://panda-gpt.github.io/) or our [paper](https://github.com/yxuansu/PandaGPT/blob/main/PandaGPT.pdf).
-
-<p align="center" width="100%">
-<img src="./demonstration.jpg" alt="PandaGPT-4" style="width: 100%; min-width: 300px; display: block; margin: auto;">
-</p>
-
-(1) In this example, PandaGPT takes an input image and reasons over the user's input.
-
-<p align="center" width="100%">
-<img src="./online_demo.jpg" alt="PandaGPT-4" style="width: 100%; min-width: 300px; display: block; margin: auto;">
-</p>
-
-(2) In this example, PandaGPT takes the joint input from two modalities, i.e. (1) an <b>image</b> 👀 of car and (2) an <b>audio</b>👂 of thunderstorm. 
-
-
-****
+# SkillGPT: A Sport-Tailored Proficiency Estimation VLM
 
 <span id='all_catelogue'/>
 
