@@ -24,10 +24,6 @@
 
 ### 1. Introduction: <a href='#all_catelogue'>[Back to Top]</a>
 
-<p align="center" width="100%">
-<img src="./PandaGPT.png" alt="PandaGPT-4" style="width: 80%; min-width: 300px; display: block; margin: auto;">
-</p>
-
 **License** The icons in the image are taken from [this website](https://www.flaticon.com).
 
 
